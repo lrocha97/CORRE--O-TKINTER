@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
-from banco_vendas import Database  # Importa a classe Database do arquivo de backend
+from BANCO_VENDAS import Database  # Importa a classe Database do arquivo de backend
 
 # Inicialização do banco de dados
 db = Database()
@@ -23,12 +23,14 @@ def abrir_login():
     for widget in root.winfo_children():  # Limpa todos os widgets da tela atual
         widget.destroy()
 
-    tk.Label(root, text="Email:").pack(pady=5)  # Label para o campo de email
+    root.config(bg="lightblue")
+
+    tk.Label(root, text="Email:", bg="lightblue").pack(pady=5)  # Label para o campo de email
     global email_entry  # Cria a variável global para o campo de email
     email_entry = tk.Entry(root)  # Cria o campo de entrada de email
     email_entry.pack()
 
-    tk.Label(root, text="Senha:").pack(pady=5)  # Label para o campo de senha
+    tk.Label(root, text="Senha:",bg="lightblue").pack(pady=5)  # Label para o campo de senha
     global senha_entry  # Cria a variável global para o campo de senha
     senha_entry = tk.Entry(root, show="*")  # Cria o campo de entrada de senha (oculta os caracteres)
     senha_entry.pack()
@@ -40,10 +42,12 @@ def abrir_home():
     for widget in root.winfo_children():  # Limpa todos os widgets da tela atual
         widget.destroy()
 
-    tk.Label(root, text="Bem-vindo!").pack(pady=10)  # Exibe a mensagem de boas-vindas
-    tk.Button(root, text="Cadastrar Venda", command=abrir_cadastro_venda).pack(pady=10)  # Botão para ir para tela de cadastro de venda
-    tk.Button(root, text="Vendas Realizadas", command=abrir_vendas_realizadas).pack(pady=10)  # Botão para ir para tela de vendas realizadas
-    tk.Button(root, text="Sair", command=root.quit).pack(pady=10)  # Botão para sair do aplicativo
+    root.config(bg="#95A5A6")
+
+    tk.Label(root, text="Bem-vindo!",bg="#BDC3C7").pack(pady=10)  # Exibe a mensagem de boas-vindas
+    tk.Button(root,bg="#BDC3C7", text="Cadastrar Venda", command=abrir_cadastro_venda).pack(pady=10)  # Botão para ir para tela de cadastro de venda
+    tk.Button(root,bg="#BDC3C7", text="Vendas Realizadas", command=abrir_vendas_realizadas).pack(pady=10)  # Botão para ir para tela de vendas realizadas
+    tk.Button(root,bg="#BDC3C7", text="Sair", command=root.quit).pack(pady=10)  # Botão para sair do aplicativo
 
 # Tela de cadastro de vendas
 def abrir_cadastro_venda():
@@ -115,6 +119,7 @@ def abrir_cadastro_venda():
             messagebox.showerror("Erro", "Erro ao cadastrar venda!")  # Erro no cadastro
 
     tk.Button(root, text="Salvar Venda", command=salvar_venda).pack(pady=10)  # Botão para salvar a venda
+    tk.Button(root, text="Voltar para a HOME", command=abrir_home).pack(pady=10) # Botão para voltar para a HomePage
 
 # Tela de Vendas Realizadas
 def abrir_vendas_realizadas():
