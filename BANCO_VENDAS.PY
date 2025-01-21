@@ -40,6 +40,7 @@ class Database:
                 self.cursor.execute(query_venda_produto, (venda_id, produto_id, quantidade, preco_unitario))
 
             self.connection.commit()
+            
             return True
         except Exception as e:
             self.connection.rollback()
@@ -60,5 +61,8 @@ class Database:
             GROUP BY v.id
             ORDER BY v.data_venda DESC
         """
+
+
+
         self.cursor.execute(query)
         return self.cursor.fetchall()
